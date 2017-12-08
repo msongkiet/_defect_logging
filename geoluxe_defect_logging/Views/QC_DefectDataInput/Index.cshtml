@@ -1,0 +1,28 @@
+﻿
+@using geoluxe_defect_logging.Models
+@model IndexModels
+
+@{
+    ViewBag.Title = "Index";
+}
+<body>
+
+    @using (Html.BeginForm("Index", "QC_DefectDataInput", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <form class="form-horizontal">
+            <div class="container">
+                <h4>DEFECT LOGGING APPLICATION</h4>
+                <div class="form-group">
+                    <label class="col-md-1 control-label">Slab ID</label>
+                    <div class="col-md-11">
+                        @Html.TextBoxFor(m => m.Slab_ID, null, new { @class = "form-control col-md-2", @type = "text" })
+                            <button type="submit" class="btn btn-default" name="submit">
+                                <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</body>
