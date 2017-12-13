@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,12 +11,15 @@ namespace geoluxe_defect_logging.Models
 
     }
 
-    public class IndexModels
-    {       
-        public string Slab_ID { get; set; }
+    public class SlabIDPartialModels
+    {
+        [Key]
+        [Required]
+        [Display(Name = "Slab ID")]
+        public string SlabID { get; set; }
     }
 
-    public class SlabDetailModels
+    public class SlabDetailPartialModels
     {
         public string SlabWidth_1 { get; set; }
         public string SlabWidth_2 { get; set; }
@@ -27,10 +31,10 @@ namespace geoluxe_defect_logging.Models
         public string SlabThickness_4 { get; set; }
         public string SlabThickness_5 { get; set; }
         public string SlabThickness_6 { get; set; }
-        public string Shades{ get; set; }
+        public string Shades { get; set; }
     }
 
-    public class DefectDetailModels
+    public class DefectDetailPartialModels
     {
         public string DistX { get; set; }
         public string DistY { get; set; }
@@ -38,7 +42,7 @@ namespace geoluxe_defect_logging.Models
         public bool Reprocess { get; set; }
     }
 
-    public class DefectListModels
+    public class DefectListPartialModels
     {
         public bool Status { get; set; }
     }
