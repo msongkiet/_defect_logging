@@ -1,0 +1,65 @@
+﻿@model geoluxe_defect_logging.Models.DefectDetailPartialModels
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @*@Html.AntiForgeryToken()*@
+    <form class="form-horizontal">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-md-3 control-label">Dist.X (mm)</label>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.DistX, null, new { @class = "form-control col-sm-2", @type = "text" })
+                    </div>
+
+                    <label class="col-md-3 control-label">Dist.Y (mm)</label>
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.DistY, null, new { @class = "form-control col-sm-2", @type = "text" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 control-label">ประเภท Defect</label>
+                    <div class="col-md-3">
+                        <div class="dropdown">
+                            <span>
+                                <select id="DefectType" name="DefectType" class="form-control">
+                                    <option value=""></option>
+                                    <option value="J">J</option>
+                                    <option value="K">K</option>
+                                    <option value="L">L</option>
+                                    <option value="M">M</option>
+                                    <option value="N">N</option>
+                                </select>
+                            </span>
+                        </div>
+                    </div>
+                    <label class="col-md-2 control-label">สถานะ</label>
+                    <div action="" class="col-sm-4">
+                        <input type="radio" name="Reprocess" value=true> Reprocess ได้<br>
+                        <input type="radio" name="Reprocess" value=false> Reprocess ไม่ได้<br>
+                    </div>
+                </div>
+
+                <div class="form-group row" style="border:solid">
+                    <label class="col-md-3 control-label">Detail</label>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-8">
+
+                    </div>
+                    <div class="col-md-2">
+                        <button type="reset" id="reset" value="reset" class="btn btn-default" style="align-content:center">ล้างข้อมูล</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="submit" id="submit" value="submit" class="btn btn-primary" style="align-content:center">เพิ่มข้อมูล</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    }
+</body>

@@ -1,25 +1,39 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
-@*<body>
-
-    @using (Html.BeginForm("Index", "QC_DefectDataInput", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<body>
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <form class="form-horizontal">
             <div class="container">
-                <h4>DEFECT LOGGING APPLICATION</h4>
-                <div class="form-group">
-                    <label class="col-md-1 control-label">Slab ID</label>
-                    <div class="col-md-11">
-                        @Html.TextBoxFor(m => m.Slab_ID, null, new { @class = "form-control col-md-2", @type = "text" })
-                            <button type="submit" class="btn btn-default" name="submit">
-                                <span class="glyphicon glyphicon-play"></span>
-                            </button>
-                    </div>
+                <h5>DEFECT LOGGING APPLICATION</h5>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("SlabIDPartial")
                 </div>
             </div>
+            @*<div class="row" style="border-top:solid">
+                    <div class="col-md-6" style="border-right:solid">
+                        <p>
+                            @Html.Partial("SlabDetailPartial")
+                        </p>
+
+                    </div>
+                    <div class="col-md-6">
+                        <p>
+                            @Html.Partial("DefectDetailPartial")
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            @Html.Partial("DefectListPartial")
+                        </p>
+                    </div>
+                </div>*@
         </form>
     }
-</body>*@
+</body>

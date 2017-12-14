@@ -29,5 +29,7 @@ namespace geoluxe_defect_logging.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<geoluxe_defect_logging.Models.SlabIDPartialModels> SlabIDPartialModels { get; set; }
     }
 }

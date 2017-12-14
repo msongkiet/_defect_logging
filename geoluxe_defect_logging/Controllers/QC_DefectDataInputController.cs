@@ -15,58 +15,65 @@ namespace geoluxe_defect_logging.Controllers
             return View();
         }
 
-        //// POST: Index
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index(IndexModels models)
-        //{
-        //    string Slab_ID = models.Slab_ID;
-        //    return RedirectToAction("SlabDetail", "QC_DefectDataInput", models);
-        //}
+        // POST: Index
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(FormCollection form)
+        {
+            string SlabID = form["SlabID"];
+            TempData["SlabID"] = SlabID;
+            return RedirectToAction("SlabDetail", "QC_DefectDataInput", TempData["SlabID"]);
+        }
 
-        //// GET: Slab_Detail 
-        //public ActionResult SlabDetail(IndexModels models)
-        //{
-        //    string Slab_ID = models.Slab_ID;
-        //    ViewBag.Message = Slab_ID;
-        //    return View();
-        //}
+        // GET: Slab Detail
+        public ActionResult SlabDetail()
+        {
+            ViewBag.message = TempData["SlabID"];
+            return View();
+        }
 
-        //// POST: Slab_Detail 
-        //[HttpPost]
-        //[AllowAnonymous]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult SlabDetail(FormCollection form)
-        //{
-        //    string Slab_ID = form["Slab_ID"];
+        // GET: Test
+        public ActionResult Test()
+        {
+            return View();
+        }
 
-        //    string SlabWidth_1 = form["SlabWidth_1"];
-        //    string SlabWidth_2 = form["SlabWidth_2"];
 
-        //    string SlabLength_1 = form["SlabLength_1"];
-        //    string SlabLength_2 = form["SlabLength_2"];
+        // POST: Slab Detail 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult SlabDetail(FormCollection form)
+        {
+            //string SlabID = form["SlabID"];
 
-        //    string SlabThickness_1 = form["SlabThickness_1"];
-        //    string SlabThickness_2 = form["SlabThickness_2"];
-        //    string SlabThickness_3 = form["SlabThickness_3"];
-        //    string SlabThickness_4 = form["SlabThickness_4"];
-        //    string SlabThickness_5 = form["SlabThickness_5"];
-        //    string SlabThickness_6 = form["SlabThickness_6"];
+            string SlabWidth_1 = form["SlabWidth_1"];
+            string SlabWidth_2 = form["SlabWidth_2"];
 
-        //    string Shades = form["Shades"];
+            //string SlabLength_1 = form["SlabLength_1"];
+            //string SlabLength_2 = form["SlabLength_2"];
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        Response.Write("<script>alert('Pass');</script>");
-        //    }
-        //    else
-        //    {
-        //        Response.Write("<script>alert('Fail');</script>");
-        //    }
+            //string SlabThickness_1 = form["SlabThickness_1"];
+            //string SlabThickness_2 = form["SlabThickness_2"];
+            //string SlabThickness_3 = form["SlabThickness_3"];
+            //string SlabThickness_4 = form["SlabThickness_4"];
+            //string SlabThickness_5 = form["SlabThickness_5"];
+            //string SlabThickness_6 = form["SlabThickness_6"];
 
-        //    return RedirectToAction("DefectDetail", "QC_DefectDataInput");
-        //}
+            //string Shades = form["Shades"];
+
+            //if (ModelState.IsValid)
+            //{
+            //    Response.Write("<script>alert('Pass');</script>");
+            //}
+            //else
+            //{
+            //    Response.Write("<script>alert('Fail');</script>");
+            //}
+            ViewBag.message = "ViewBAG1";
+            return RedirectToAction("Test", "QC_DefectDataInput", ViewBag.message);
+        }
 
 
         // GET : Slab ID Partial View
