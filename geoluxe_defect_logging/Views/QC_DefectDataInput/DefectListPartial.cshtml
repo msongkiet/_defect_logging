@@ -1,15 +1,14 @@
 ﻿@model geoluxe_defect_logging.Models.DefectListPartialModels
 
-<body>
-    @using (Html.BeginForm("Test", "QC_DefectDataInput", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
     <form class="form-horizontal">
-        <div class="container">
-            <h5>รายการ Defect</h5>
-            <div class="row">
-                <div class="col-md-11">
-                    <table class="table table-bordered table-responsive">
+        <div class="panel panel-default col-md-12">
+            <div class="panel-heading">Defect List</div>
+            <div class="panel-body" ;">
+
+                <div class="col-md-10">
+                    <table class="table table-hover table-responsive">
                         <thead style="font-size:smaller">
                             <tr>
                                 <th>No.</th>
@@ -31,24 +30,24 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-md-1">
-                    <div class="row">
-                            <label class="control-label">สถานะของ Slab</label>
-                    </div>
-                    <div class="row">
-                        <div action="" class="">
-                            <input type="radio" name="Status" value=1> PM In<br>
-                            <input type="radio" name="Status" value=2> PM Out<br>
-                            <input type="radio" name="Status" value=3> Reprocess<br>
+                <div class="panel panel-default col-md-2">
+                    <div class="panel-heading">สถานะของ Slab</div>
+                    <div class="panel-body" ;">
+                        <div class="row">
+                            <div action="" class="">
+                                <input type="radio" name="Status" value=1> PM In<br>
+                                <input type="radio" name="Status" value=2> PM Out<br>
+                                <input type="radio" name="Status" value=3> Reprocess<br>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <button type="submit" id="submit_save" value="submit_save" class="btn btn-default" style="align-content:center">บันทึกข้อมูล</button>
+                        <div class="row">
+                            <button type="submit" id="submit" value="submit" class="btn btn-primary" style="align-content:center">บันทึกข้อมูล</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+
     </form>
-    }
-</body>
+}

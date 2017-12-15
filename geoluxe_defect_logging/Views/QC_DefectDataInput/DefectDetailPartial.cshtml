@@ -1,21 +1,19 @@
 ﻿@model geoluxe_defect_logging.Models.DefectDetailPartialModels
 
-<body>
-    @using (Html.BeginForm())
-    {
-        @*@Html.AntiForgeryToken()*@
+
     <form class="form-horizontal">
         <div class="container">
             <div class="col-md-12">
+
                 <div class="form-group row">
-                    <label class="col-md-3 control-label">Dist.X (mm)</label>
+                    @Html.LabelFor(m => m.DistX, null, new { @class = "control-label col-md-3" })
                     <div class="col-md-3">
-                        @Html.TextBoxFor(m => m.DistX, null, new { @class = "form-control col-sm-2", @type = "text" })
+                        @Html.TextBoxFor(m => m.DistX, null, new { @class = "form-control", @type = "text" })
                     </div>
 
-                    <label class="col-md-3 control-label">Dist.Y (mm)</label>
+                    @Html.LabelFor(m => m.DistY, null, new { @class = "control-label col-md-3" })
                     <div class="col-md-3">
-                        @Html.TextBoxFor(m => m.DistY, null, new { @class = "form-control col-sm-2", @type = "text" })
+                        @Html.TextBoxFor(m => m.DistY, null, new { @class = "form-control", @type = "text" })
                     </div>
                 </div>
 
@@ -42,8 +40,9 @@
                     </div>
                 </div>
 
-                <div class="form-group row" style="border:solid">
-                    <label class="col-md-3 control-label">Detail</label>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Detail</div>
+                    <div class="panel-body" style="min-height:100px ;">fdoinfds sdofjohisdfj</div>
                 </div>
 
                 <div class="form-group row">
@@ -51,15 +50,14 @@
 
                     </div>
                     <div class="col-md-2">
-                        <button type="reset" id="reset" value="reset" class="btn btn-default" style="align-content:center">ล้างข้อมูล</button>
+                        <button type="reset" id="reset" value="reset" class="btn" style="align-content:center">ล้างข้อมูล</button>
                     </div>
 
                     <div class="col-md-2">
-                        <button type="submit" id="submit" value="submit" class="btn btn-primary" style="align-content:center">เพิ่มข้อมูล</button>
+                        <button type="submit" id="submit" value="submit" class="btn btn-default" style="align-content:center">เพิ่มข้อมูล</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    }
-</body>
+

@@ -5,38 +5,30 @@
 }
 
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <form class="form-horizontal">
-            <div class="container">
-                <h5>DEFECT LOGGING APPLICATION</h5>
-            </div>
-            <div class="row">
-                <div class="col-md-12">                 
-                    @Html.Partial("SlabIDPartial")
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <p>
-                        @Html.Partial("SlabDetailPartial")
-                    </p>
 
+        <div class="container">
+            <h5>DEFECT LOGGING APPLICATION</h5>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Partial("SlabIDPartial")
+            </div>
+        </div>
+
+        <div class="row">
+            <p>
+                <div class="col-md-6">
+                    @Html.Partial("SlabDetailPartial")
                 </div>
                 <div class="col-md-6">
-                    <p>
-                        @Html.Partial("DefectDetailPartial")
-                    </p>
+                    @Html.Partial("DefectDetailPartial")
                 </div>
-            </div>
-            <div class="row">
-                <div class="">
-                    <p>
-                        @Html.Partial("DefectListPartial")
-                    </p>
-                </div>
-            </div>
-        </form>
-    }
+            </p>
+        </div>
+
+        <div class="row">
+            <p>
+                @Html.Partial("DefectListPartial")
+            </p>
+        </div>
 </body>

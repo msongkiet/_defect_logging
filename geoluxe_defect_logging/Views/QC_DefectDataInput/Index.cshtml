@@ -2,38 +2,13 @@
     ViewBag.Title = "Index";
 }
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <form class="form-horizontal">
-            <div class="container">
-                <h5>DEFECT LOGGING APPLICATION</h5>
+        <div class="container">
+            <h5>DEFECT LOGGING APPLICATION</h5>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Partial("SlabIDPartial")
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    @Html.Partial("SlabIDPartial")
-                </div>
-            </div>
-            @*<div class="row" style="border-top:solid">
-                    <div class="col-md-6" style="border-right:solid">
-                        <p>
-                            @Html.Partial("SlabDetailPartial")
-                        </p>
+        </div>
 
-                    </div>
-                    <div class="col-md-6">
-                        <p>
-                            @Html.Partial("DefectDetailPartial")
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            @Html.Partial("DefectListPartial")
-                        </p>
-                    </div>
-                </div>*@
-        </form>
-    }
 </body>
