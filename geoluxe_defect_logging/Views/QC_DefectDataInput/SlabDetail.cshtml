@@ -1,34 +1,34 @@
 ﻿
 @{
-    //ViewBag.Title = "SlabDetail";
-    ViewBag.Title = ViewBag.message;
+    ViewBag.Title = "SlabDetail";
+    //ViewBag.Title = ViewBag.message;
 }
 
 <body>
+    <div class="container">
+        <h5>DEFECT LOGGING APPLICATION</h5>
+    </div>
 
-        <div class="container">
-            <h5>DEFECT LOGGING APPLICATION</h5>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("SlabIDPartialReadOnly")
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                @Html.Partial("SlabIDPartial")
-            </div>
-        </div>
-
-        <div class="row">
-            <p>
-                <div class="col-md-6">
-                    @Html.Partial("SlabDetailPartial")
-                </div>
-                <div class="col-md-6">
-                    @Html.Partial("DefectDetailPartial")
-                </div>
-            </p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("SlabDetailPartial")
         </div>
 
-        <div class="row">
-            <p>
-                @Html.Partial("DefectListPartial")
-            </p>
+        <div class="col-md-6">
+            @Html.Partial("DefectDetailPartial")
         </div>
+    </div>
+
+    <div class="row">
+        <p>
+            @Html.Partial("DefectListPartial")
+        </p>
+    </div>
+
 </body>

@@ -3,9 +3,9 @@
 @using (Html.BeginForm())
 {
     <form class="form-horizontal">
+
         <div class="container">
             <div class="col-md-12">
-
                 <div class="form-group row">
                     @Html.LabelFor(m => m.OrderNo, null, new { @class = "control-label col-md-3" })
                     <div class="col-md-6">
@@ -19,6 +19,7 @@
                         @Html.TextBoxFor(m => m.MatType, null, new { @class = "form-control", @type = "text", @placeholder = "Auto-generated using slab id", @disabled = "disabled" })
                     </div>
                 </div>
+
 
                 <div class="form-group row">
                     <label class="col-md-3 control-label">Shades</label>

@@ -18,24 +18,33 @@ namespace geoluxe_defect_logging.Controllers
         // POST: Index
         [HttpPost]
         [AllowAnonymous]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(SlabIDPartialModels models)
         {
-            string SlabID = models.SlabID;
-            //TempData["SlabID"] = SlabID;
-            //return View();
-            return RedirectToAction("SlabDetail", "QC_DefectDataInput", models);
+            //string SlabID = models.SlabID;
+            TempData["SlabID"] = models.SlabID;
+            return RedirectToAction("SlabDetailPartial", "QC_DefectDataInput", TempData["SlabID"]);
         }
 
         // GET: Slab Detail
-        public ActionResult SlabDetail(SlabIDPartialModels models)
+        public ActionResult SlabDetail(SlabDetailPartialModels models)
         {
-            ViewBag.message = models.SlabID;
+            //string MatType = TempData["MatType"].ToString();
+            //string SlabID = models.SlabID;
+
+            //string SlabID = ViewBag.SlabID;
+            //string OrderNo = ViewBag.OrderNo;
+            //string MatType = ViewBag.MatType;
+
+            string SlabID = models.SlabID;
+            string OrderNo = models.OrderNo;
+            string MatType = models.MatType;
+
             return View();
         }
 
         // GET: Test
-        public ActionResult Test()
+        public ActionResult TestView()
         {
             return View();
         }
@@ -83,10 +92,61 @@ namespace geoluxe_defect_logging.Controllers
             return View();
         }
 
-        // GET : Slab Detail Partial View
-        public ActionResult SlabDetailPartial()
+        public ActionResult SlabIDPartialReadOnly()
         {
             return View();
+        }
+
+        // GET : Slab Detail Partial View
+        public ActionResult SlabDetailPartial(SlabDetailPartialModels models)
+        {
+            //string SlabID = TempData["SlabID"].ToString();
+            //string OrderNo = "XXXXX";
+            //string MatType = "N/A";
+
+            models.SlabID = TempData["SlabID"].ToString();
+            models.OrderNo = "XXXXX";
+            models.MatType = "N/A";
+
+            if (models.SlabID != null)
+            {
+                string str = models.SlabID.Substring(0, 2);
+
+                switch (str)
+                {
+                    case "10":
+                        models.MatType = "ALIVERI";
+                        break;
+                    case "20":
+                        models.MatType = "BLUETTE";
+                        break;
+                    case "30":
+                        models.MatType = "DIONYSOS";
+                        break;
+                    case "40":
+                        models.MatType = "ERAMO";
+                        break;
+                    case "50":
+                        models.MatType = "NESTOS GRAY";
+                        break;
+                    case "60":
+                        models.MatType = "NESTOS ROYAL";
+                        break;
+                    case "70":
+                        models.MatType = "PALISSANDRO";
+                        break;
+                }
+            }
+
+            //ViewBag.SlabID = SlabID;
+            //ViewBag.OrderNo = OrderNo;
+            //ViewBag.MatType = MatType;
+
+            //TempData["SlabID"] = SlabID;
+            //TempData["OrderNo"] = OrderNo;
+            //TempData["MatType"] = MatType;
+
+            return RedirectToAction("SlabDetail", "QC_DefectDataInput", models);
         }
 
         // GET : Defect Detail Partial View

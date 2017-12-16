@@ -13,14 +13,21 @@ namespace geoluxe_defect_logging.Models
 
     public class SlabIDPartialModels
     {
-        [Key]
-        [Required]
+        [Required(ErrorMessage = "Slab ID is required")]
+        [StringLength(5)]
         [Display(Name = "Slab ID")]
         public string SlabID { get; set; }
+        
+        // Initailize model
+        public SlabIDPartialModels()
+            {
+                SlabID = "";
+            }
     }
 
     public class SlabDetailPartialModels
     {
+        public string SlabID { get; set; }
         [Display(Name = "Order No.")]
         public string OrderNo { get; set; }
         [Display(Name = "Mat. Type")]
@@ -40,6 +47,23 @@ namespace geoluxe_defect_logging.Models
         public string SlabThickness_6 { get; set; }
 
         public string Shades { get; set; }
+
+        // Initailize model
+        public SlabDetailPartialModels()
+        {
+            OrderNo = "";
+            MatType = "";
+            SlabWidth_1 = "";
+            SlabWidth_2 = "";
+            SlabLength_1 = "";
+            SlabLength_2 = "";
+            SlabThickness_1 = "";
+            SlabThickness_2 = "";
+            SlabThickness_3 = "";
+            SlabThickness_4 = "";
+            SlabThickness_5 = "";
+            SlabThickness_6 = "";
+        }
     }
 
     public class DefectDetailPartialModels
@@ -53,11 +77,26 @@ namespace geoluxe_defect_logging.Models
         public string DefectType { get; set; }
 
         public bool Reprocess { get; set; }
+
+        // Initailize model
+        public DefectDetailPartialModels()
+        {
+            DistX = "";
+            DistY = "";
+            DefectType = "";
+            Reprocess = false;
+        }
     }
 
     public class DefectListPartialModels
     {
         [Display(Name = "Status")]
-        public bool Status { get; set; }
+        public string Status { get; set; }
+
+        // Initailize model
+        public DefectListPartialModels()
+        {
+            Status = "" ;
+        }
     }
 }

@@ -279,7 +279,8 @@
     <Content Include="Views\QC_DefectDataInput\DefectDetailPartial.cshtml" />
     <Content Include="Views\QC_DefectDataInput\DefectListPartial.cshtml" />
     <Content Include="Views\QC_DefectDataInput\SlabDetail.cshtml" />
-    <Content Include="Views\QC_DefectDataInput\Test.cshtml" />
+    <Content Include="Views\QC_DefectDataInput\TestView.cshtml" />
+    <Content Include="Views\QC_DefectDataInput\SlabIDPartialReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
