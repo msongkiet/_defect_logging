@@ -1,20 +1,24 @@
-﻿
+﻿@model geoluxe_defect_logging.Models.QC_SlabList
+
 @{
     ViewBag.Title = "SlabDetail";
     //ViewBag.Title = ViewBag.message;
 }
+
 
 <body>
     <div class="container">
         <h5>DEFECT LOGGING APPLICATION</h5>
     </div>
 
+    @Html.AntiForgeryToken()
+
     <div class="row">
         <div class="col-md-6">
             @Html.Partial("SlabIDPartialReadOnly")
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-6">
             @Html.Partial("SlabDetailPartial")

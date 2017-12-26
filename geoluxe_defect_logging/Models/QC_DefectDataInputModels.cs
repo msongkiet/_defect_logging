@@ -11,92 +11,209 @@ namespace geoluxe_defect_logging.Models
 
     }
 
-    public class SlabIDPartialModels
-    {
-        [Required(ErrorMessage = "Slab ID is required")]
-        [StringLength(5)]
-        [Display(Name = "Slab ID")]
-        public string SlabID { get; set; }
-        
-        // Initailize model
-        public SlabIDPartialModels()
-            {
-                SlabID = "";
-            }
-    }
+    // dbDesign_rev1.1_DefectLogging
 
-    public class SlabDetailPartialModels
+    public class QC_SlabList
     {
-        public string SlabID { get; set; }
+        [Key]
+        public int ID { get; set; }
+
+        [Display(Name = "Slab ID")]
+        public UInt64 SlabID { get; set; }
+
         [Display(Name = "Order No.")]
-        public string OrderNo { get; set; }
+        public int OrderNo { get; set; }
+
         [Display(Name = "Mat. Type")]
         public string MatType { get; set; }
 
-        public string SlabWidth_1 { get; set; }
-        public string SlabWidth_2 { get; set; }
-
-        public string SlabLength_1 { get; set; }
-        public string SlabLength_2 { get; set; }
-
-        public string SlabThickness_1 { get; set; }
-        public string SlabThickness_2 { get; set; }
-        public string SlabThickness_3 { get; set; }
-        public string SlabThickness_4 { get; set; }
-        public string SlabThickness_5 { get; set; }
-        public string SlabThickness_6 { get; set; }
-
         public string Shades { get; set; }
 
-        // Initailize model
-        public SlabDetailPartialModels()
-        {
-            OrderNo = "";
-            MatType = "";
-            SlabWidth_1 = "";
-            SlabWidth_2 = "";
-            SlabLength_1 = "";
-            SlabLength_2 = "";
-            SlabThickness_1 = "";
-            SlabThickness_2 = "";
-            SlabThickness_3 = "";
-            SlabThickness_4 = "";
-            SlabThickness_5 = "";
-            SlabThickness_6 = "";
-        }
+        public float Length_1 { get; set; }
+        public float Length_2 { get; set; }
+
+        public float Width_1 { get; set; }
+        public float Width_2 { get; set; }
+
+        public float Thickness_1 { get; set; }
+        public float Thickness_2 { get; set; }
+        public float Thickness_3 { get; set; }
+        public float Thickness_4 { get; set; }
+        public float Thickness_5 { get; set; }
+        public float Thickness_6 { get; set; }
+
+        public DateTime Date_of_Entry { get; set; }
+
+        public string SlabStatus { get; set; }
     }
 
-    public class DefectDetailPartialModels
+    public class QC_SlabDefectList 
     {
-        [Display(Name = "Dist. X (mm)")]
-        public string DistX { get; set; }
-
-        [Display(Name = "Dist. Y (mm)")]
-        public string DistY { get; set; }
-
-        public string DefectType { get; set; }
-
+        [Key]
+        [Display(Name = "Slab ID")]
+        public UInt64 SlabID { get; set; }
         public bool Reprocess { get; set; }
+        public int OperatorID { get; set; }
+        public int DefectID { get; set; }
+        public int BasedID { get; set; }
+        public int CategoryID { get; set; }
+        public float Location_X { get; set; }
+        public float Location_Y { get; set; }
 
-        // Initailize model
-        public DefectDetailPartialModels()
+        public List<QC_SlabDefectList> QC_DefectList { get; set; }
+        public QC_SlabDefectList()
         {
-            DistX = "";
-            DistY = "";
-            DefectType = "";
-            Reprocess = false;
+            QC_DefectList = new List<QC_SlabDefectList>();           
         }
     }
 
-    public class DefectListPartialModels
+    public class DBOperator
     {
-        [Display(Name = "Status")]
-        public string Status { get; set; }
-
-        // Initailize model
-        public DefectListPartialModels()
-        {
-            Status = "" ;
-        }
+        [Key]
+        public int OperatorID { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public int EmployeeID { get; set; }
     }
+
+    public class DefectCategory_Lookup
+    {
+        [Key]
+        public int CategoryID { get; set; }
+        public int ParentID { get; set; }
+        public string Description { get; set; }
+        public int Revision { get; set; }
+        public string Remark { get; set; }
+    }
+
+    public class QC_Defect
+    {
+        [Key]
+        public int DefectID { get; set; }
+        public int SlabID { get; set; }
+        public string CategoryID { get; set; }
+        public string Remark { get; set; }
+    }
+
+    public class QC_SizeDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_ChipDefect : QC_Defect
+    {
+        public float Size { get; set; }
+    }
+
+    public class QC_SurfaceCrackDefect : QC_Defect
+    {
+        public string Orientation { get; set; }
+        public float Width { get; set; }
+        public float Length { get; set; }
+    }
+
+    public class QC_LaminateDefect : QC_Defect
+    {
+        public int Number_of_Laminates { get; set; }
+        public float Depth { get; set; }
+        public float Length { get; set; }
+    }
+
+    public class QC_SideCrackDefect : QC_Defect
+    {
+        public string Orientation { get; set; }
+        public float Width { get; set; }
+        public float Length { get; set; }
+    }
+
+    public class QC_EdgeCrackDefect : QC_Defect
+    {
+        public string Orientation { get; set; }
+        public int Number_of_Cracks { get; set; }
+        public float Width { get; set; }
+        public float Length { get; set; }
+    }
+
+    public class QC_BrokenCornerDefect : QC_Defect
+    {
+        public float Width { get; set; }
+        public float Length { get; set; }
+    }
+
+    public class QC_BottomChipDefect : QC_Defect
+    {
+        public int Number_of_Chips { get; set; }
+        public float Depth { get; set; }
+    }
+
+    public class QC_SwellingDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_PolishingDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_ScrubHeadDefect : QC_Defect
+    {
+        public float Size { get; set; }
+    }
+
+    public class QC_BackDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_BlackSpotDefect : QC_Defect
+    {
+        public float Size { get; set; }
+    }
+
+    public class QC_FeltMarkDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_RepairMarkDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_ColorMarkDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_BlurredPatternDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_CrookedPatternDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_ColorPatternDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_FeatherPatternDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_LayerJointsPatternDefect : QC_Defect
+    {
+
+    }
+
+    public class QC_WavyPatternDefect : QC_Defect
+    {
+
+    }
+
 }

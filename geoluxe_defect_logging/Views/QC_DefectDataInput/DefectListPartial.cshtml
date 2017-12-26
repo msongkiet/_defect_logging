@@ -1,6 +1,6 @@
-﻿@model geoluxe_defect_logging.Models.DefectListPartialModels
+﻿@model geoluxe_defect_logging.Models.QC_SlabDefectList
 
-@using (Html.BeginForm("TestView","QC_DefectDataInput"))
+@using (Html.BeginForm())
 {
     <form class="form-horizontal">
         <div class="panel panel-default col-md-12">
@@ -31,7 +31,7 @@
                     </table>
                 </div>
                 <div class="panel panel-default col-md-2">
-                    <div class="panel-heading">สถานะของ Slab</div>
+                    @*<div class="panel-heading">สถานะของ Slab</div>*@
                     <div class="panel-body" ;">
                         <div class="row">
                             <div action="" class="">
@@ -40,9 +40,9 @@
                                 <input type="radio" name="Status" value=3> Reprocess<br>
                             </div>
                         </div>
-                        <div class="row">
+                        @*<div class="row">
                             <button type="submit" id="submit" value="submit" class="btn btn-primary" style="align-content:center">บันทึกข้อมูล</button>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>

@@ -1,11 +1,10 @@
-﻿@model geoluxe_defect_logging.Models.SlabIDPartialModels
-
+﻿@model geoluxe_defect_logging.Models.QC_SlabList
 @using (Html.BeginForm("Index", "QC_DefectDataInput", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <form class="form-horizontal">
         <div class="container">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group row">
                     @Html.LabelFor(m => m.SlabID, null, new { @class = "control-label col-md-3" })
                     <div class="col-md-9">
