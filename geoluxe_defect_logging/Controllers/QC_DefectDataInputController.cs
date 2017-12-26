@@ -44,7 +44,6 @@ namespace geoluxe_defect_logging.Controllers
 
                 switch (str)
                 {
-
                     case "10":
                         models.MatType = "ERAMO";
                         break;
@@ -72,13 +71,14 @@ namespace geoluxe_defect_logging.Controllers
                     case "74":
                         models.MatType = "ERABUS";
                         break;
-                    default:                      
+                    default:
                         models.MatType = "N/A";
-                        break;                    
+                        break;
                 }
             }
 
             return RedirectToAction("SlabDetail", "QC_DefectDataInput", models);
+
         }
 
         // GET: Slab Detail
@@ -107,6 +107,11 @@ namespace geoluxe_defect_logging.Controllers
             return View();
         }
 
+        public ActionResult DefectListPartial()
+        {
+            return View();
+        }
+
         // POST: Defect Detail Partial View
         //[HttpPost]
         //[AllowAnonymous]
@@ -120,6 +125,11 @@ namespace geoluxe_defect_logging.Controllers
         //{
         //    return View();
         //}
+
+        public ActionResult Defect0()
+        {
+            return PartialView();
+        }
 
         public ActionResult Defect100()
         {

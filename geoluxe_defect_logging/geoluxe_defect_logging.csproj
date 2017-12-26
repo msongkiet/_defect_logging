@@ -194,7 +194,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QC_DefectDataInputController.cs" />
@@ -202,7 +201,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\QC_DefectDataInputModels.cs" />
@@ -307,6 +305,7 @@
     <Content Include="Views\QC_DefectDataInput\Defect300.cshtml" />
     <Content Include="Views\QC_DefectDataInput\Defect400.cshtml" />
     <Content Include="Views\QC_DefectDataInput\Defect500.cshtml" />
+    <Content Include="Views\QC_DefectDataInput\Defect0.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

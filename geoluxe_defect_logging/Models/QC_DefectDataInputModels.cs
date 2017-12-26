@@ -57,7 +57,11 @@ namespace geoluxe_defect_logging.Models
         public int DefectID { get; set; }
         public int BasedID { get; set; }
         public int CategoryID { get; set; }
+
+        [Display(Name = "Location X")]
         public float Location_X { get; set; }
+
+        [Display(Name = "Location Y")]
         public float Location_Y { get; set; }
 
         public List<QC_SlabDefectList> QC_DefectList { get; set; }

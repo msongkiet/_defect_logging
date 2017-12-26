@@ -26,7 +26,7 @@
                             <div class="dropdown">
                                 <span>
                                     <select id="DefectType" onchange="SelectedDefectType(this);" name="DefectType" class="form-control">
-                                        <option value=""></option>
+                                        <option value=0></option>
                                         <option value=100>ขนาด</option>
                                         <option value=200>กะเทาะ</option>
                                         <option value=300>ร้าวหน้า</option>
@@ -36,15 +36,18 @@
                                 </span>
                             </div>
                         </div>
-                        <label class="col-md-2 control-label">สถานะ</label>
-                        <div action="" class="col-sm-4">
-                            <input type="radio" id="Reprocess" name="Reprocess" value=1> Reprocess ได้<br>
-                            <input type="radio" id="Reprocess" name="Reprocess" value=0> Reprocess ไม่ได้<br>
-                        </div>
+
+                        @*<label class="col-md-2 control-label">สถานะ</label>
+                        <div class="panel panel-default col-md-4">
+                            <label class="radio-inline"><input type="radio" id="Reprocess" name="Reprocess" value=1> Reprocess ได้</label>
+                            <br>
+                            <label class="radio-inline"><input type="radio" id="Reprocess" name="Reprocess" value=0> Reprocess ไม่ได้</label>
+                        </div>*@
+
                     </div>
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">Detail</div>
+                        <div class="panel-heading">รายละเอียด</div>
                         <div id="DefectDetailRadioButton" name="DefectDetailRadioButton" class="panel-body" style="min-height:100px ;"></div>
                     </div>
 
@@ -52,7 +55,6 @@
                         <div class="col-md-8">
 
                         </div>
-
 
                         <div class="col-md-2">                       
                             <button type="reset" onclick="clear()" class="btn btn-default" style="align-content:center">เพิ่มข้อมูล</button>
@@ -77,16 +79,21 @@
         function submit() {
             var Location_X = document.getElementsByName("Location_X")[0].value;
             var Location_Y = document.getElementsByName("Location_Y")[0].value;
-            var Reprocess = document.forms.namedItem("Reprocess");
-            //var x = document.getElementsByName("Reprocess").selectedIndex;
-            //var Reprocess = document.getElementsById("Reprocess")[x].selectedValue;
-            //var SelectedDefectType = DefectType.value;
-            //var SelectedDefectDetail = Document.getElementsByName("DefectDetailRadioButton")[0].value;
-            //alert(Location_X + " " + Location_Y);
-            alert(Reprocess);
-            //alert(Location_X + " " + Location_Y + " " + Reprocess + " " + SelectedDefectType + " " + SelectedDefectDetail);
+            var SelectedDefectType = DefectType.value;
+            var SelectedDefectDetaiil = ($('input[name=DefectDetaiil]:checked').val());
+            alert(Location_X + " " + Location_Y + " " + SelectedDefectType + " " + SelectedDefectDetaiil);
+
+            //Cleared Partial View
             document.getElementsByName("Location_X")[0].value = "";
             document.getElementsByName("Location_Y")[0].value = "";
+            $("#DefectType").val('0');
+            var selectedText = DefectType.options[DefectType.selectedIndex].innerHTML;
+            var selectedValue = DefectType.value;
+            var url = "/QC_DefectDataInput/Defect";
+            url = url + selectedValue;
+            $("#DefectDetailRadioButton").load(url);
+            $("#DefectDetailRadioButton").show();
+
         }
 
         function clear() {
