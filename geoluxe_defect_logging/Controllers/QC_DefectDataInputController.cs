@@ -109,6 +109,7 @@ namespace geoluxe_defect_logging.Controllers
 
         public ActionResult DefectListPartial()
         {
+            Console.WriteLine("STOP");
             return View();
         }
 
