@@ -120,3 +120,4 @@ D:\cccl_songkiem\project\web_development\geoluxe_defect_logging\geoluxe_defect_l
 D:\cccl_songkiem\project\web_development\geoluxe_defect_logging\geoluxe_defect_logging\obj\Debug\geoluxe_defect_logging.csproj.CoreCompileInputs.cache
 D:\cccl_songkiem\project\web_development\geoluxe_defect_logging\geoluxe_defect_logging\obj\Debug\geoluxe_defect_logging.dll
 D:\cccl_songkiem\project\web_development\geoluxe_defect_logging\geoluxe_defect_logging\obj\Debug\geoluxe_defect_logging.pdb
+D:\cccl_songkiem\project\web_development\geoluxe_defect_logging\geoluxe_defect_logging\obj\Debug\geoluxe_defect_logging.csprojResolveAssemblyReference.cache

@@ -82,7 +82,7 @@ namespace geoluxe_defect_logging.Controllers
         }
 
         // GET: Slab Detail
-        public ActionResult SlabDetail(QC_SlabList models)
+        public ActionResult SlabDetail(QC_SlabDefectList models)
         {
             //var SlabID = models.SlabID;
             //var OrderNo = models.OrderNo;
@@ -109,6 +109,7 @@ namespace geoluxe_defect_logging.Controllers
 
         public ActionResult DefectListPartial()
         {
+            Console.WriteLine("STOP");
             return View();
         }
 

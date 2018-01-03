@@ -28,7 +28,6 @@ namespace geoluxe_defect_logging.Models
         public string MatType { get; set; }
 
         public string Shades { get; set; }
-
         public float Length_1 { get; set; }
         public float Length_2 { get; set; }
 
@@ -47,21 +46,21 @@ namespace geoluxe_defect_logging.Models
         public string SlabStatus { get; set; }
     }
 
-    public class QC_SlabDefectList 
+    public class QC_SlabDefectList : QC_SlabList
     {
-        [Key]
-        [Display(Name = "Slab ID")]
-        public UInt64 SlabID { get; set; }
+        //[Key]
+        //[Display(Name = "Slab ID")]
+        //public UInt64 SlabID { get; set; }
         public bool Reprocess { get; set; }
         public int OperatorID { get; set; }
         public int DefectID { get; set; }
         public int BasedID { get; set; }
         public int CategoryID { get; set; }
 
-        [Display(Name = "Location X")]
+        [Display(Name = "Location X (mm)")]
         public float Location_X { get; set; }
 
-        [Display(Name = "Location Y")]
+        [Display(Name = "Location Y (mm)")]
         public float Location_Y { get; set; }
 
         public List<QC_SlabDefectList> QC_DefectList { get; set; }
