@@ -7,124 +7,62 @@
     //ViewBag.Title = ViewBag.message;
 }
 
-<form id="inputForm">
-        <div class="container">
-            <h5>DEFECT LOGGING APPLICATION</h5>
+    <div class="container">
+        <h5>DEFECT LOGGING APPLICATION</h5>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("SlabIDPartialReadOnly")
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Partial("SlabDetailPartial")
         </div>
 
-        @Html.AntiForgeryToken()
+        <div class="col-md-6">
+            @Html.Partial("DefectDetailPartial")
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8">
 
-        <div class="row">
-            <div class="col-md-6">
-                @Html.Partial("SlabIDPartialReadOnly")
+            </div>
+
+            <div class="col-md-2">
+                <button type="reset" onclick="clear()" class="btn btn-default" style="align-content:center">ลบข้อมูล</button>
+            </div>
+            <div class="col-md-2">
+                <button onclick="processData()" class="btn btn-primary" style="align-content:center">เพิ่มข้อมูล</button>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                @Html.Partial("SlabDetailPartial")
-            </div>
+    <div class="row">
+        <p>
+            @Html.Partial("DefectListPartial")
+        </p>
+    </div>
 
-            <div class="col-md-6">
-                @Html.Partial("DefectDetailPartial")
-            </div>
-            <div class="form-group row">
-                <div class="col-md-8">
+<script type="text/javascript">
 
-                </div>
-
-                <div class="col-md-2">
-                    <button type="reset" onclick="clear()" class="btn btn-default" style="align-content:center">ลบข้อมูล</button>
-                </div>
-                <div class="col-md-2">
-                    <input type="submit" value="เพิ่มข้อมูล" class="btn btn-primary" style="align-content:center">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <p>
-                @Html.Partial("DefectListPartial")
-            </p>
-        </div>
-
-        <script type="text/javascript">
-
-            //function SelectedDefectType(DefectType) {
-            //    var selectedText = DefectType.options[DefectType.selectedIndex].innerHTML;
-            //    var selectedValue = DefectType.value;
-            //    var url = "/QC_DefectDataInput/Defect";
-            //    url = url + selectedValue;
-            //    $("#DefectDetailRadioButton").load(url);
-            //    $("#DefectDetailRadioButton").show();
-
-            //}
-
-            //function submit() {
-            //    //Slab Detail
-            //    var SlabID = document.getElementsByName("SlabID")[0].value;
-            //    var OrderNo = document.getElementsByName("OrderNo")[0].value;
-            //    var MatType = document.getElementsByName("MatType")[0].value;
-            //    var SelectedShade = Shade.value;
-            //    var Width_1 = document.getElementsByName("Width_1")[0].value;
-            //    var Width_2 = document.getElementsByName("Width_2")[0].value;
-            //    var Length_1 = document.getElementsByName("Length_1")[0].value;
-            //    var Length_2 = document.getElementsByName("Length_2")[0].value;
-            //    var Thickness_1 = document.getElementsByName("Thickness_1")[0].value;
-            //    var Thickness_2 = document.getElementsByName("Thickness_2")[0].value;
-            //    var Thickness_3 = document.getElementsByName("Thickness_3")[0].value;
-            //    var Thickness_4 = document.getElementsByName("Thickness_4")[0].value;
-            //    var Thickness_5 = document.getElementsByName("Thickness_5")[0].value;
-            //    var Thickness_6 = document.getElementsByName("Thickness_6")[0].value;
-
-            //    //Defect Detail
-            //    var Location_X = document.getElementsByName("Location_X")[0].value;
-            //    var Location_Y = document.getElementsByName("Location_Y")[0].value;
-            //    var SelectedDefectType = DefectType.value;
-            //    var SelectedDefectDetaiil = ($('input[name=DefectDetaiil]:checked').val());
-
-            //    alert(Thickness_1 + " " + Thickness_2 + " " + Thickness_3 + " " + Thickness_4 + " " + Thickness_5 + " " + Thickness_6);
-            //    alert(SlabID + " " + OrderNo + " " + MatType + " " + SelectedShade + " " + Width_1 + " " + Width_2 + " " + Length_1 + " " + Length_2);
-            //    alert(Location_X + " " + Location_Y + " " + SelectedDefectType + " " + SelectedDefectDetaiil);
-
-            //    var text = $("#Width_1").val();
-            //    $.ajax({
-            //        type: "POST",
-            //        url: "DefectListPartial",
-            //        contentType: "application/json", // Specify the content type
-            //        //data: JSON.stringify({ "data": text }), // Here you pass data to the controller's action
-            //        success: function (response) {
-            //            $(".load").html(response);
-            //        }
-            //    });
-
-            //    /Cleared Defect Partial View
-            //    document.getElementsByName("Location_X")[0].value = "";
-            //    document.getElementsByName("Location_Y")[0].value = "";
-            //    $("#DefectType").val('0');
-            //    var selectedText = DefectType.options[DefectType.selectedIndex].innerHTML;
-            //    var selectedValue = DefectType.value;
-            //    var url = "/QC_DefectDataInput/Defect";
-            //    url = url + selectedValue;
-            //    $("#DefectDetailRadioButton").load(url);
-            //    $("#DefectDetailRadioButton").show();
-
-            //}
-
-      $("#inputForm").submit(function (event) {
-
+    function processData() {
         event.preventDefault();
-            alert("Test");
-        var form = $("#inputForm").serialize();
+        alert("Test");
+        var slabForm = $("#SlabInfoForm").serialize();
+        var defectForm = $("#DefectDetailForm").serialize();
+        var submitForm = $("#SlabInfoForm,#DefectDetailForm").serialize();
+
+        alert(submitForm);
 
         $.ajax({
             type: "post",
             url: '@Url.Action("DefectListPartial", "QC_DefectDataInput")',
-            data: form,
+            data: submitForm,
             success: function (response) {
                 alert("OK!");
             }
         });
-      })
-        </script>
-</form>
+    };
+</script>
