@@ -2,7 +2,7 @@
 
 @*@using (Html.BeginForm())
 {*@
-    <form class="form-horizontal">
+    @*<form class="form-horizontal">*@
         <div class="panel panel-default col-md-12">
             <div class="panel-heading">Defect List</div>
             <div class="panel-body" ;">
@@ -23,11 +23,45 @@
                                 <th>Other details</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                            <tr>
+                                <td>
+                                    i
+                                </td>
+                                <td>
+                                    TEST2
+                                </td>
+                                <td>
+                                    TEST3
+                                </td>
+                                <td>
+                                    TEST4
+                                </td>
+                                <td>
+                                    TEST5
+                                </td>
+                                <td>
+                                    TEST6
+                                </td>
+                                <td>
+                                    TEST7
+                                </td>
+                                <td>
+                                    TEST8
+                                </td>
+                                <td>
+                                    TEST9
+                                </td>
+                                <td>
+                                    TEST10
+                                </td>
+                            </tr>
+                            }
                         </tbody>
+
                     </table>
                 </div>
                 <div class="panel panel-default col-md-2">
@@ -57,5 +91,5 @@
         </div>
 
 
-    </form>
+    @*</form>*@
 @*}*@
